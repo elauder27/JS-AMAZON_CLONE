@@ -1,4 +1,11 @@
 // Automated Testing
+//Testing framework: Jasmine
+/**
+ * describe which takes 2 parameters and an arrow function
+ * a function called it which create a test and given a string and an arrow function
+ * expect which takes a value and returns an object with a method called toBe which takes an expected value and compares it to the actual value and returns true if they are the same and false if they are not
+ *
+ */
 
 import formatCurrency from "../scripts/utils/money.js";
 
