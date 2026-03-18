@@ -82,6 +82,9 @@ products.forEach((product) => {
                     <option value="10">10</option>
                     </select>
                 </div>
+                
+<!-- polymorphism = using a method without neccessarily knowing which class it belongs to, as long as the method is implemented in the class, we can use it. -->
+                ${product.extraInfoHtml()}
 
                 <div class="product-spacer"></div>
 

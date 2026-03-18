@@ -33,6 +33,28 @@ class Product {
   getPriceDollars() {
     return `$${formatCurrency(this.priceCents)}`;
   }
+
+  extraInfoHtml() {
+    return "";
+  }
+}
+//Inheritance
+//we use inheritance when we have one class that is a more specific type  of another class. The more specific class is called a subclass, and the more general class is called a superclass. The subclass inherits all the properties and methods of the superclass, and can also have its own properties and methods.
+class Clothing extends Product {
+  sizeChartLink;
+
+  constructor(productDetails) {
+    //special feature of subclass constructor: must call super() before using this. super() calls the constructor of the superclass, and allows
+    super(productDetails);
+    this.sizeChartLink = productDetails.sizeChartLink;
+  }
+
+  //method overiding
+  extraInfoHtml() {
+    return `
+    <a href = "${this.sizeChartLink}" target="_blank"> Size Chart</a>
+    `;
+  }
 }
 
 const product1 = new Product({
@@ -520,7 +542,8 @@ export const products = [
     keywords: ["sweaters", "hoodies", "apparel", "mens"],
   },
 ].map((productDetails) => {
+  if (productDetails.type === "clothing") {
+    return new Clothing(productDetails);
+  }
   return new Product(productDetails);
 });
-
-console.log(products);
