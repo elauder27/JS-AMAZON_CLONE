@@ -68,7 +68,41 @@ const product1 = new Product({
   priceCents: 1090,
   keywords: ["socks", "sports", "apparel"],
 });
-console.log(product1);
+
+/*
+//built-in-classes
+const date = new Date();
+console.log(date);
+console.log(date.toLocaleDateString());
+*/
+
+/*
+console.log(this);
+
+const object2 = {
+  a: 1, b: this.a,
+};
+
+  */
+/*
+function logThis() {
+  console.log(this);
+  //we can change "this" to whatever we want using call, apply, or bind
+}
+
+logThis();
+logThis.call("Hey");
+console.log(this);
+
+const object3 = {
+  //arrow functions do not have their own "this", they inherit "this" from the surrounding scope, which is the global scope in this case. Therefore, "this" inside the arrow function refers to the global object, which is "window" in a browser environment.
+  method: () => {
+    console.log(this);
+  },
+};
+
+object3.method();
+*/
 
 export const products = [
   {
