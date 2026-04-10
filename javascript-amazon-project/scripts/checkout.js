@@ -10,15 +10,19 @@ import { loadProducts, loadProductsFetch } from "../data/products.js";
 //shortcut for promises
 async function loadPage() {
   // makes the function return a promise
-
-  await loadProductsFetch(); // we can only use this when we use async
-
-  await new Promise((resolve) => {
-    loadCart(() => {
-      resolve();
+  try {
+    // we can use it for both async and normal code
+    //we can use the "throw" to create an error
+    await loadProductsFetch(); // we can only use this when we use async\
+    const value = await new Promise((resolve, reject) => {
+      loadCart(() => {
+        //  reject("err3");
+        resolve();
+      });
     });
-  });
-
+  } catch (error) {
+    console.log("oops!, error, Go back to safety");
+  }
   renderOrderSummary();
   renderPaymentSummary();
 }
