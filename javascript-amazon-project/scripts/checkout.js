@@ -5,15 +5,11 @@ import { renderPaymentSummary } from "./checkout/payment-summary.js";
  */
 //promises helps keep our code flat to prevent more nesting
 import { loadCart } from "../data/cart.js";
-import { loadProducts } from "../data/products.js";
+import { loadProducts, loadProductsFetch } from "../data/products.js";
 
 Promise.all([
-  newPromise((resolve) => {
-    loadProducts(() => {
-      resolve();
-    });
-  }),
-  newPromise((resolve) => {
+  loadProductsFetch(),
+  new Promise((resolve) => {
     loadCart(() => {
       resolve();
     });
