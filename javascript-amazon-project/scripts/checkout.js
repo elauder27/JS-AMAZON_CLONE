@@ -7,7 +7,26 @@ import { renderPaymentSummary } from "./checkout/payment-summary.js";
 import { loadCart } from "../data/cart.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 
-Promise.all([
+//shortcut for promises
+async function loadPage() {
+  // makes the function return a promise
+
+  await loadProductsFetch(); // we can only use this when we use async
+
+  await new Promise((resolve) => {
+    loadCart(() => {
+      resolve();
+    });
+  });
+
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+
+loadPage();
+
+//async/await can only be used with a promise
+/* Promise.all([
   loadProductsFetch(),
   new Promise((resolve) => {
     loadCart(() => {
@@ -17,7 +36,7 @@ Promise.all([
 ]).then(() => {
   renderOrderSummary();
   renderPaymentSummary();
-});
+}); */
 
 //promises are a way to wait for asynchronous code to run
 /* new Promise((resolve) => {
