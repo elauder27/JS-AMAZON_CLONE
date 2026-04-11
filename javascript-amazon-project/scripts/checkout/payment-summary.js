@@ -78,3 +78,4 @@ export function renderPaymentSummary() {
       window.location.href = "orders.html"; //a special feature of javascript
     });
 }
+//using url parameters we can save data ine url directly and use javascript to get the data out of the url
